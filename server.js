@@ -6,7 +6,7 @@ const Razorpay = require('razorpay');
 const app = express();
 app.use(bodyParser.json());
 
-// Aapka Telegram Bot Token aur Channel ID
+// Yahan apni details dalein
 const token = 'YOUR_TELEGRAM_BOT_TOKEN';
 const bot = new TelegramBot(token, { polling: true });
 const CHAT_ID = '@your_telegram_channel_username'; // Apna channel username ya ID dalein
@@ -16,13 +16,16 @@ const razorpay = new Razorpay({
   key_secret: 'RAZORPAY_KEY_SECRET'
 });
 
-// 1. /start Command Handler
+// Koyeb ke liye Dynamic Port (CRITICAL)
+const PORT = process.env.PORT || 8000;
+
+// /start Command Handler
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, "👋 Welcome! Premium membership lene ke liye hamari website par visit karein aur payment karein. Payment hote hi aapko automatic join link mil jayegi.");
 });
 
-// 2. Razorpay Order Creation Endpoint (Website se call hoga)
+// Razorpay Order Creation Endpoint
 app.post('/create-order', async (req, res) => {
   try {
     const { amount, duration, telegramUserId } = req.body;
@@ -41,7 +44,7 @@ app.post('/create-order', async (req, res) => {
   }
 });
 
-// 3. Razorpay Webhook (Payment successful hone par automatic link bhejne ke liye)
+// Razorpay Webhook (Payment successful hone par automatic link bhejne ke liye)
 app.post('/webhook', async (req, res) => {
   const event = req.body.event;
 
@@ -58,7 +61,7 @@ app.post('/webhook', async (req, res) => {
     if (duration === '2 Month') expireSeconds = 60 * 24 * 60 * 60;
 
     try {
-      const expireDate = Math.floor(Date.now() / 1000) + expireSeconds;
+      const expireDate = Math.floor(Date.0 / 1000) + expireSeconds;
 
       // Single-use invite link generate karna (member_limit: 1)
       const inviteLinkData = await bot.createChatInviteLink(CHAT_ID, {
@@ -78,6 +81,6 @@ app.post('/webhook', async (req, res) => {
   res.json({ status: 'ok' });
 });
 
-app.listen(3000, () => {
-  console.log('Bot and Server is running on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
