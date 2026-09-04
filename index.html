@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Premium Membership</title>
 
-<!-- Confetti Library for Celebration Effect -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
@@ -427,7 +427,6 @@ padding: 2px;
 .gpay { background: #4285F4; }
 .phonepe { background: #5f259f; }
 .paytm { background: #00b9f1; }
-.amazon { background: #ff9900; color: #111; }
 .close-btn {
 background: #ccc;
 color: #333;
@@ -481,15 +480,12 @@ z-index: 10;
 <body>
 
 <div class="box">
-<!-- Theme Switcher -->
 <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
 
-<!-- Glowing Flash Sale Banner -->
 <div class="flash-banner">
 ⚡ Flash Sale Ending Soon! Grab VIP Access Now
 </div>
 
-<!-- Countdown Timer -->
 <div class="countdown-box">
 ⏳ Offer expires in: <span id="timer">14:59</span>
 </div>
@@ -497,20 +493,16 @@ z-index: 10;
 <img src="logo.png" class="logo">
 <div class="title">🔥 PREMIUM MEMBERSHIP 🔥</div>
 
-<!-- Spin Wheel Trigger -->
 <button class="spin-trigger-btn" onclick="playClickSound(); openSpinModal()">🎁 Spin to Win Extra Discount!</button>
 
-<!-- Movie Catalog Button -->
 <button class="catalog-btn" onclick="playClickSound(); window.location.href='movies.html'">
   🔞 View All Desy & Catalog
 </button>
 
-<!-- Live Viewer Counter -->
 <div class="viewer-counter">
 👀 <span id="viewCount">42</span> people viewing this page right now
 </div>
 
-<!-- PoM PoM Updates Ticker -->
 <div class="movie-update-ticker" id="movieTicker">
 🔞 Checking for new PoM PoM updates...
 </div>
@@ -529,19 +521,19 @@ z-index: 10;
 <div class="name">premium Membership</div>
 
 <div class="plans">
-<div class="plan" onclick="playClickSound(); selectPlan(15,'1week',this)">
+<div class="plan" onclick="playClickSound(); selectPlan(30,'2day',this)">
 <div class="duration">2 Day</div>
 <div class="price">₹30</div>
 </div>
-<div class="plan" onclick="playClickSound(); selectPlan(45,'1month',this)">
+<div class="plan" onclick="playClickSound(); selectPlan(70,'1week',this)">
 <div class="duration">1 Weeks</div>
 <div class="price">₹70</div>
 </div>
-<div class="plan" onclick="playClickSound(); selectPlan(85,'2month',this)">
+<div class="plan" onclick="playClickSound(); selectPlan(150,'1month',this)">
 <div class="duration">1 Month</div>
 <div class="price">₹150</div>
 </div>
-<div class="plan" onclick="playClickSound(); selectPlan(130,'3month',this)">
+<div class="plan" onclick="playClickSound(); selectPlan(280,'2month',this)">
 <div class="duration">2 Month</div>
 <div class="price">₹280</div>
 </div>
@@ -552,7 +544,6 @@ z-index: 10;
 <button class="pay" onclick="playClickSound(); openPaymentModal()">💳 Pay Now & Scan QR</button>
 <button class="copy-upi-btn" onclick="playClickSound(); copyUpiId()">📋 Copy UPI ID (Manual Pay)</button>
 
-<!-- Secure Trust Badge -->
 <div class="secure-badge">
 🔒 100% Secure & Instant Access via UPI
 </div>
@@ -561,7 +552,7 @@ z-index: 10;
 
 <button class="telegram" onclick="playClickSound(); winnerScreenshot()">👤 Owner Screenshot</button>
 <button class="channel-btn" onclick="playClickSound(); openMainChannel()">📢 Main Channel</button>
-<button class="channel" onclick="playClickSound(); openMainChannel()">💳Payment Proff💳</button>
+<button class="channel-btn" style="background:#e67e22;" onclick="playClickSound(); paymentproof()">💳 Payment Proof 💳</button>
 
 <div class="faq-section">
 <div class="faq-title">❓ Frequently Asked Questions</div>
@@ -584,15 +575,12 @@ z-index: 10;
 
 </div>
 
-<!-- Floating Telegram Chat Button -->
 <a href="https://t.me/Rimi5605" target="_blank" class="floating-telegram" title="Chat with Owner">
 <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.482-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.119.098.152.228.163.331.011.103.024.337.013.519z"/></svg>
 </a>
 
-<!-- Toast Notification -->
 <div id="toast" class="toast">✅ Copied Successfully!</div>
 
-<!-- Payment Modal with QR Code (Download button removed) -->
 <div id="paymentModal" class="modal">
 <div class="modal-content">
 <h3>Scan QR or Pay via App</h3>
@@ -618,7 +606,6 @@ z-index: 10;
 </div>
 </div>
 
-<!-- Spin Wheel Modal -->
 <div id="spinModal" class="modal">
 <div class="modal-content">
 <h3>🎁 Lucky Spin Wheel</h3>
@@ -633,13 +620,12 @@ z-index: 10;
 </div>
 </div>
 
-<!-- Include QRCode JS Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
 let selectedAmount = 0;
 let selectedDuration = "";
-let plansData = { "1week": "1 Week", "1month": "1 Month", "2month": "2 Month", "3month": "3 Month" };
+let plansData = { "2day": "2 Day", "1week": "1 Weeks", "1month": "1 Month", "2month": "2 Month" };
 let upiId = "BHARATPE.9Q0Q0K0Z8Q466572@unitype";
 let qrCodeInstance = null;
 
@@ -676,23 +662,23 @@ function playClickSound() {
 }
 
 function selectPlan(amount, durationKey, element){
-selectedAmount = amount;
-selectedDuration = plansData[durationKey];
-document.querySelectorAll(".plan").forEach(function(plan){ plan.classList.remove("active"); });
-element.classList.add("active");
-document.getElementById("selectedPlan").innerHTML = "✅ Selected: " + selectedDuration + " — ₹" + amount;
-confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+  selectedAmount = amount;
+  selectedDuration = plansData[durationKey];
+  document.querySelectorAll(".plan").forEach(function(plan){ plan.classList.remove("active"); });
+  element.classList.add("active");
+  document.getElementById("selectedPlan").innerHTML = "✅ Selected: " + selectedDuration + " — ₹" + amount;
+  confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
 }
 
 function openPaymentModal(){
-if(selectedAmount === 0){ alert("Please select a membership plan first!"); return; }
-document.getElementById("modalAmount").innerHTML = "Amount: ₹" + selectedAmount + " (" + selectedDuration + ")";
-document.getElementById("paymentModal").style.display = "flex";
-let qrContainer = document.getElementById("qrcode");
-qrContainer.innerHTML = "";
-let upiString = `upi://pay?pa=${upiId}&pn=Sekh%20Sarif&am=${selectedAmount}&cu=INR`;
-qrCodeInstance = new QRCode(qrContainer, { text: upiString, width: 130, height: 130 });
-confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+  if(selectedAmount === 0){ alert("Please select a membership plan first!"); return; }
+  document.getElementById("modalAmount").innerHTML = "Amount: ₹" + selectedAmount + " (" + selectedDuration + ")";
+  document.getElementById("paymentModal").style.display = "flex";
+  let qrContainer = document.getElementById("qrcode");
+  qrContainer.innerHTML = "";
+  let upiString = `upi://pay?pa=${upiId}&pn=Sekh%20Sarif&am=${selectedAmount}&cu=INR`;
+  qrCodeInstance = new QRCode(qrContainer, { text: upiString, width: 130, height: 130 });
+  confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
 }
 
 function closePaymentModal(){ document.getElementById("paymentModal").style.display = "none"; }
@@ -710,21 +696,21 @@ function spinWheel(){
 }
 
 function payVia(appType){
-let pa = upiId;
-let pn = "Sekh%20Sarif";
-let am = selectedAmount;
-let finalUrl = "";
-if(appType === 'gpay'){ finalUrl = "tez://upi/pay?pa=" + pa + "&pn=" + pn + "&am=" + am + "&cu=INR"; }
-else if(appType === 'phonepe'){ finalUrl = "phonepe://pay?pa=" + pa + "&pn=" + pn + "&am=" + am + "&cu=INR"; }
-else { finalUrl = "paytmmp://pay?pa=" + pa + "&pn=" + pn + "&am=" + am + "&cu=INR"; }
-window.location.href = finalUrl;
-closePaymentModal();
+  let pa = upiId;
+  let pn = "Sekh%20Sarif";
+  let am = selectedAmount;
+  let finalUrl = "";
+  if(appType === 'gpay'){ finalUrl = "tez://upi/pay?pa=" + pa + "&pn=" + pn + "&am=" + am + "&cu=INR"; }
+  else if(appType === 'phonepe'){ finalUrl = "phonepe://pay?pa=" + pa + "&pn=" + pn + "&am=" + am + "&cu=INR"; }
+  else { finalUrl = "paytmmp://pay?pa=" + pa + "&pn=" + pn + "&am=" + am + "&cu=INR"; }
+  window.location.href = finalUrl;
+  closePaymentModal();
 }
 
 function toggleFaq(element){
-let answer = element.nextElementSibling;
-if(answer.style.display === "block"){ answer.style.display = "none"; element.querySelector("span").innerText = "▼"; }
-else { answer.style.display = "block"; element.querySelector("span").innerText = "▲"; }
+  let answer = element.nextElementSibling;
+  if(answer.style.display === "block"){ answer.style.display = "none"; element.querySelector("span").innerText = "▼"; }
+  else { answer.style.display = "block"; element.querySelector("span").innerText = "▲"; }
 }
 
 let time = 15 * 60;
@@ -748,15 +734,15 @@ async function fetchMovieUpdates() {
       updateMovieTicker();
     }
   } catch(e) {
-    document.getElementById("Ticker").innerHTML = "🎬 🔥 Latest PoM Pom  Added Daily!";
+    document.getElementById("movieTicker").innerHTML = "🎬 🔥 Latest PoM Pom Added Daily!";
   }
 }
 
 function updateMovieTicker() {
   if(movieUpdates.length > 0) {
     let ticker = document.getElementById("movieTicker");
-    ticker.innerHTML = `${Updates[Index]}`;
-    movieIndex = (movieIndex + 1) % Updates.length;
+    ticker.innerHTML = `${movieUpdates[movieIndex]}`;
+    movieIndex = (movieIndex + 1) % movieUpdates.length;
   }
 }
 
@@ -769,9 +755,7 @@ let buyers = [
   { name: "@Priya99", plan: "1 Week" },
   { name: "@Vikas_Kumar", plan: "2 Months" },
   { name: "@Javed", plan: "1 Month" },
-  { name: "@Rime", plan: "1 Month" },
-  { name: "@Simran", plan: "2 Day" },
-  { name: "@Deep_sing", plan: "2 Day" }
+  { name: "@Simran", plan: "2 Day" }
 ];
 let bIndex = 0;
 setInterval(function(){
