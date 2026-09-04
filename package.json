@@ -1,0 +1,16 @@
+{
+  "name": "telegram-razorpay-bot",
+  "version": "1.0.0",
+  "description": "Automated Telegram Channel Join Bot with Razorpay",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "node-telegram-bot-api": "^0.65.1",
+    "razorpay": "^2.9.2"
+  }
+}
+
